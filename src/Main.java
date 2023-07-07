@@ -8,9 +8,7 @@ public class Main {
 
         SistemaImpl sistema = new SistemaImpl();
         sistema.iniciar();
-        System.out.println("pio");
-        System.out.println("bastian estuvo aca");
-        System.out.println("estuve de nuevo");
+        
         
 
 
