@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skin rose
+
+entity Bibliotech{
+Socios
+Libros
+}
+entity Socio{
+Nombre
+Apellido
+Rut
+Contraseña
+Libros en Préstamo
+}
+entity Libro{
+Título
+Autor
+Categoria
+ISBN
+Cantidad de páginas
+Stock
+}
+
+Bibliotech "1"--->"0...*" Libro : posee
+Bibliotech "1"--->"0...*" Socio : posee
+Socio "1"--->"0...*" Libro : tiene
+@enduml2

@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skin rose
+
+package Bibliotech <<Folder>>{
+
+    package Services <<Folder>>{
+
+        Class SistemaImpl{
+
+        }
+
+        Interface Sistema{
+        -socios:
+        -libros:
+        -socio:
+        }
+
+    }
+    package Model <<Folder>>{
+
+        Class Socios{
+        - nombre
+        - apellido
+        - rut
+        - contraseña
+        + Get´s
+        + Set´s
+
+        }
+
+        Class Libros{
+        - isbn
+        - nombreLibro
+        - autor
+        - categoria
+        - cantPaginas
+        - stock
+        + Get´s
+        + Set´s
+
+        }
+    }
+
+    package Utils <<Folder>>{
+        Class IniciarSesion{
+        - private registerForm: JPanel ;
+        - private passwordField1: JPasswordField;
+        - private rutIniciar: JTextField;
+        - private iniciarSesionButton: JButton;
+        - private salirButton: JButton;
+        - private panel1 JPanel;
+        - private imagenlogo: JLabel;
+        - private listaUsuario: List<Usuario>
+        }
+
+        Class menuPrincipal{
+        -private devolverLibroButton:  JButton;
+        -private menuPrincipal:  JPanel;
+        -private buscarLibroButton:  JButton;
+        -private agregarNuevoLibroButton:  JButton;
+        -private prestarLibroButton:  JButton;
+        -private listaUsuario List<Usuario>;
+    }
+    }
+
+}
+@enduml
