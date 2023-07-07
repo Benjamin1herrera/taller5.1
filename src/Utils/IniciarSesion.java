@@ -1,12 +1,13 @@
 package Utils;
 
+import Model.Libros;
 import Model.Usuario;
-import Services.SistemaImpl;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,10 +20,12 @@ public class IniciarSesion extends JFrame {
     private JPanel panel1;
     private JLabel imagenlogo;
     private List<Usuario> listaUsuario;
+    private List<Libros> listaLibros;
 
-    public IniciarSesion(List<Usuario>listaUsuario) throws IOException {
+    public IniciarSesion(List<Usuario>listaUsuario, ArrayList<Libros> listaLibros) throws IOException {
 
         this.listaUsuario = listaUsuario;
+        this.listaLibros = listaLibros;
         setContentPane(panel1);
         setTitle("Bienvenido a Bibliotech");
         setSize(400,400);
@@ -32,7 +35,7 @@ public class IniciarSesion extends JFrame {
         iniciarSesionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                logIn(listaUsuario);
+                logIn(listaUsuario,listaLibros);
             }
         });
         salirButton.addActionListener(new ActionListener() {
@@ -44,7 +47,7 @@ public class IniciarSesion extends JFrame {
 
     }
 
-    private void logIn(List<Usuario>listaUsuario) {
+    private void logIn(List<Usuario>listaUsuario, ArrayList<Libros> listaLibros) {
         boolean condicion = true;
         try {
             String rutIngresada = rutIniciar.getText();
@@ -59,7 +62,7 @@ public class IniciarSesion extends JFrame {
                     if (rutIngresada.equalsIgnoreCase(rut) && contraseñaIngresada.equalsIgnoreCase(contrasenia)) {
                             condicion = false;
                             JOptionPane.showMessageDialog(registerForm, "se escontro");
-                            menuPrincipal menuPrincipal = new menuPrincipal(listaUsuario);
+                            menuPrincipal menuPrincipal = new menuPrincipal(listaUsuario,listaLibros);
                             panel1.setVisible(false);
                             menuPrincipal.setVisible(true);
                     }

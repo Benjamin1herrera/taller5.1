@@ -12,6 +12,7 @@ import java.util.List;
 
 public class SistemaImpl implements Sistema {
     ArrayList <Usuario> listaUsuarios = new ArrayList<>();
+    ArrayList <Libros>  listaLibros = new ArrayList<>();
     private IniciarSesion iniciarSesion;
 
     public SistemaImpl() throws IOException {
@@ -37,6 +38,7 @@ public class SistemaImpl implements Sistema {
 
                 //TODO: Guardar el libro en algúna estructura de datos.
                 Libros libro = new Libros(isbn, title, author, category, copies, price);
+                listaLibros.add(libro);
 
             }
         } catch (Exception e) {
@@ -68,7 +70,7 @@ public class SistemaImpl implements Sistema {
     }
 
     public void iniciar() throws IOException {
-        this.iniciarSesion = new IniciarSesion(listaUsuarios);
+        this.iniciarSesion = new IniciarSesion(listaUsuarios,listaLibros);
     }
 }
 
