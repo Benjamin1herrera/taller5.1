@@ -63,6 +63,7 @@ public class IniciarSesion extends JFrame {
                             condicion = false;
                             JOptionPane.showMessageDialog(registerForm, "se escontro");
                             menuPrincipal menuPrincipal = new menuPrincipal(listaUsuario,listaLibros);
+                            dispose();
                             panel1.setVisible(false);
                             menuPrincipal.setVisible(true);
                     }
