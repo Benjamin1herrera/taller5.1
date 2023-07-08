@@ -28,7 +28,7 @@ public class IniciarSesion extends JFrame {
         this.listaLibros = listaLibros;
         setContentPane(panel1);
         setTitle("Bienvenido a Bibliotech");
-        setSize(400,400);
+        setSize(600,450);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 

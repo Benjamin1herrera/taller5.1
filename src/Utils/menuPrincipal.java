@@ -24,7 +24,7 @@ public class menuPrincipal extends JFrame {
         this.listaUsuario = listaUsuario;
         setContentPane(menuPrincipal);
         setTitle("Menu Principal");
-        setSize(400,400);
+        setSize(600,450);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -42,7 +42,7 @@ public class menuPrincipal extends JFrame {
         agregarNuevoLibroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                agregarBoton(listaUsuario,listaLibros);
             }
         });
         devolverLibroButton.addActionListener(new ActionListener() {
@@ -58,6 +58,13 @@ public class menuPrincipal extends JFrame {
 
             }
         });
+    }
+
+    private void agregarBoton(List<Usuario> listaUsuario, List<Libros> listaLibros) {
+        agregarLibro agregar = new agregarLibro(listaUsuario,listaLibros);
+        dispose();
+        menuPrincipal.setVisible(false);
+        agregar.setVisible(true);
     }
 
     private void cerrar(List<Usuario> listaUsuario, List<Libros> listaLibros) {

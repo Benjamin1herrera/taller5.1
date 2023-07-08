@@ -25,7 +25,7 @@ public class BuscarLibro extends JFrame {
         this.listaUsuario = listaUsuario;
         setContentPane(buscar);
         setTitle("Busqueda de libro");
-        setSize(450, 450);
+        setSize(600, 450);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
