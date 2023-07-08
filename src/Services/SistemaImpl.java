@@ -15,14 +15,14 @@ public class SistemaImpl implements Sistema {
     ArrayList <Libros>  listaLibros = new ArrayList<>();
     private IniciarSesion iniciarSesion;
 
-    public SistemaImpl() throws IOException {
+    public SistemaImpl() {
         this.leerLibros();
         this.leerUsuarios();
 
     }
 
     @Override
-    public void leerLibros() throws IOException {
+    public void leerLibros() {
         // Leer el archivo "libros.txt"
         try (BufferedReader br = new BufferedReader(new FileReader("libros.txt"))) {
             String line;
@@ -48,7 +48,7 @@ public class SistemaImpl implements Sistema {
     }
 
     @Override
-    public void leerUsuarios() throws IOException {
+    public void leerUsuarios() {
         // Leer el archivo "usuarios.txt"
         try (BufferedReader br = new BufferedReader(new FileReader("usuarios.txt"))) {
             String line;

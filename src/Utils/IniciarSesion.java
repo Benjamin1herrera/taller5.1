@@ -22,7 +22,7 @@ public class IniciarSesion extends JFrame {
     private List<Usuario> listaUsuario;
     private List<Libros> listaLibros;
 
-    public IniciarSesion(List<Usuario>listaUsuario, ArrayList<Libros> listaLibros) throws IOException {
+    public IniciarSesion(List<Usuario>listaUsuario, List<Libros> listaLibros) {
 
         this.listaUsuario = listaUsuario;
         this.listaLibros = listaLibros;
@@ -47,7 +47,7 @@ public class IniciarSesion extends JFrame {
 
     }
 
-    private void logIn(List<Usuario>listaUsuario, ArrayList<Libros> listaLibros) {
+    private void logIn(List<Usuario>listaUsuario, List<Libros> listaLibros) {
         boolean condicion = true;
         try {
             String rutIngresada = rutIniciar.getText();
@@ -58,10 +58,8 @@ public class IniciarSesion extends JFrame {
                     Usuario usuario = iterator.next();
                     String rut = usuario.getRut();
                     String contrasenia = usuario.getContraseña();
-                    System.out.println(rut);
                     if (rutIngresada.equalsIgnoreCase(rut) && contraseñaIngresada.equalsIgnoreCase(contrasenia)) {
                             condicion = false;
-                            JOptionPane.showMessageDialog(registerForm, "se escontro");
                             menuPrincipal menuPrincipal = new menuPrincipal(listaUsuario,listaLibros);
                             dispose();
                             panel1.setVisible(false);
@@ -69,8 +67,12 @@ public class IniciarSesion extends JFrame {
                     }
                 }
                 if(condicion){
-                    JOptionPane.showMessageDialog(registerForm, "no se escontro");
+                    JOptionPane.showMessageDialog(registerForm, "no se escontro el usuario");
+                    clear();
                 }
+            }else{
+                JOptionPane.showMessageDialog(registerForm, "Por favor tiene que rellenar ambos campos");
+                clear();
             }
         }catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(registerForm, "[!] Ha ocurrido un error");
