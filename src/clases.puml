@@ -8,19 +8,20 @@ package Bibliotech <<Folder>>{
     package Services <<Folder>>{
 
         Class SistemaImpl{
-
+        +SistemaImpl()
+        +main(args[]: String) void
         }
 
         Interface Sistema{
-        -socios:
-        -libros:
-        -socio:
+        +leerUsuarios(): void
+        +leerLibros(): void
+        +actualizarArchivo(List<Libros> var1): void
         }
 
     }
     package Model <<Folder>>{
 
-        Class Socios{
+        Class Usuario{
         - nombre
         - apellido
         - rut
@@ -62,8 +63,41 @@ package Bibliotech <<Folder>>{
         -private agregarNuevoLibroButton:  JButton;
         -private prestarLibroButton:  JButton;
         -private listaUsuario List<Usuario>;
-    }
-    }
+        }
 
+        Class agregarLibro{
+            -private JPanel registerForm;
+            -private JTextField isbnInicial;
+            -private JPanel agregarPanel;
+            -private JTextField tituloInicial;
+            -private JTextField autorInicial;
+            -private JTextField categoriaInicial;
+            -private JTextField copiasInicial;
+            -private JTextField precioInicial;
+            -private JButton buscarButton;
+            -private JButton volverButton;
+            -private List<Usuario> listaUsuario;
+            -private List<Libros> listaLibros;
+        }
+        Class buscarLibro{
+
+            -private List<Usuario> listaUsuario;
+            -private List<Libros> listaLibros;
+            -private JPanel registerForm;
+            -private JButton buscarButton;
+            -private JPanel buscar;
+            -private JTextField isbnIniciar;
+            -private JButton volverButton;
+            -private JTextArea impresion;
+        }
+    }
+    }
+    SistemaImpl ..> Sistema
+    SistemaImpl --> Usuario
+    SistemaImpl --> Libros
+    SistemaImpl --> menuPrincipal
+    SistemaImpl --> agregarLibro
+    SistemaImpl --> IniciarSesion
+    SistemaImpl --> buscarLibro
 }
 @enduml
