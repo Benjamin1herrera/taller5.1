@@ -2,10 +2,12 @@ package Utils;
 
 import Model.Libros;
 import Model.Usuario;
+import Services.SistemaImpl;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,7 +44,11 @@ public class agregarLibro extends JFrame {
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                volver(listaLibros, listaUsuario);
+                try {
+                    volver(listaLibros, listaUsuario);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
@@ -58,7 +64,7 @@ public class agregarLibro extends JFrame {
             String precioIngresado = precioInicial.getText();
             Iterator<Libros> iterator = this.listaLibros.iterator();
 
-            if (!isbnIngresado.isEmpty() && !tituloIngresado.isEmpty() && !autorIngresado.isEmpty() && !categoriaIngresada.isEmpty() && !copiasIngresada.isEmpty() && precioIngresado.isEmpty()) {
+            if (!isbnIngresado.isEmpty() && !tituloIngresado.isEmpty() && !autorIngresado.isEmpty() && !categoriaIngresada.isEmpty() && !copiasIngresada.isEmpty() && !precioIngresado.isEmpty()) {
                 while (iterator.hasNext()) {
                     Libros libros = iterator.next();
                     String isbn = libros.getIsbn();
@@ -74,22 +80,31 @@ public class agregarLibro extends JFrame {
                     Libros libroAgregar = new Libros(isbnIngresado,tituloIngresado,autorIngresado,categoriaIngresada,copias,precio);
                     listaLibros.add(libroAgregar);
                     JOptionPane.showMessageDialog(registerForm,"Libro agregado");
+                    clear();
                 }
             }else{
                 JOptionPane.showMessageDialog(registerForm, "Por favor tiene que rellenar todos los campos");
                 clear();
             }
-        }catch (NumberFormatException e){
+        }catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(registerForm, "[!] Ha ocurrido un error");
             clear();
         }
     }
 
     private void clear() {
+        isbnInicial.setText("");
+        tituloInicial.setText("");
+        autorInicial.setText("");
+        categoriaInicial.setText("");
+        copiasInicial.setText("");
+        precioInicial.setText("");
     }
 
-    private void volver(List<Libros> listaLibros, List<Usuario> listaUsuario) {
+    private void volver(List<Libros> listaLibros, List<Usuario> listaUsuario) throws IOException {
         menuPrincipal menuPrincipal = new menuPrincipal(listaUsuario,listaLibros);
+        SistemaImpl sistemaImpls = new SistemaImpl();
+        sistemaImpls.actualizarArchivo(listaLibros);
         dispose();
         agregarPanel.setVisible(false);
         menuPrincipal.setVisible(true);

@@ -4,10 +4,9 @@ import Model.Libros;
 import Model.Usuario;
 import Utils.IniciarSesion;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class SistemaImpl implements Sistema {
@@ -48,6 +47,43 @@ public class SistemaImpl implements Sistema {
     }
 
     @Override
+    public void actualizarArchivo(List<Libros>listaLibros) throws IOException {
+
+        /*FileWriter fichero = null;
+
+        PrintWriter pw = null;
+        try {
+            fichero = new FileWriter("libros.txt",true);
+            pw = new PrintWriter(fichero);
+            Iterator<Libros> iterator = this.listaLibros.iterator();
+            while (iterator.hasNext()){
+                Libros libros = iterator.next();
+                String isbn = libros.getIsbn();
+                String titulo = libros.getTitulo();
+                String autor = libros.getAutor();
+                String categoria = libros.getCategoria();
+                int copias = libros.getCopias();
+                int precio = libros.getPrecio();
+
+                pw.println(isbn+","+titulo+","+autor+","+categoria+","+copias+","+precio);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (null != fichero)
+                fichero.close();
+            try {
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+
+         */
+
+    }
+
+    @Override
     public void leerUsuarios() {
         // Leer el archivo "usuarios.txt"
         try (BufferedReader br = new BufferedReader(new FileReader("usuarios.txt"))) {
@@ -69,7 +105,7 @@ public class SistemaImpl implements Sistema {
         }
     }
 
-    public void iniciar() throws IOException {
+    public void iniciar() {
         this.iniciarSesion = new IniciarSesion(listaUsuarios,listaLibros);
     }
 }

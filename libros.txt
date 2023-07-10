@@ -16,5 +16,3 @@
 9788425354247,El niño con el pijama de rayas,John Boyne,Drama,5,20
 9788416712577,Rebelión en la granja,George Orwell,Alegoría política,4,20
 9788408197616,La chica del tren,Paula Hawkins,Suspense psicológico,6,20
-9788498382548,El señor de los anillos,J.R.R. Tolkien,Fantasía épica,8,20
-9788408159171,Orgullo y prejuicio,Jane Austen,Romance clásico,3,20
